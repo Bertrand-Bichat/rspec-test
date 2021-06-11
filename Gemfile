@@ -53,6 +53,8 @@ group :development, :test do  gem 'pry-byebug'
 
   # TDD
   gem 'rspec-rails', '~> 4.1.0'
+  gem 'guard-rspec', require: false
+  gem 'factory_bot_rails'
 end
 
 group :development do
