@@ -3,14 +3,13 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   context 'comments association' do
     it 'should increment comments_count when a new comment is created' do
-      Post.destroy_all
       Comment.destroy_all
-      user = User.create(email: 'test@gmail.com', password: 'password')
-      user2 = User.create(email: 'example@gmail.com', password: 'password')
-      post = build(:post, user: user)
-      post.save
-      comment = build(:comment, post: post, user: user2)
-      comment.save
+      Post.destroy_all
+      User.destroy_all
+      user = create(:user)
+      user2 = create(:user)
+      post = create(:post, user: user)
+      create(:comment, post: post, user: user2)
       expect(User.count).to eq(2)
       expect(Post.count).to eq(1)
       expect(Comment.count).to eq(1)
@@ -19,11 +18,12 @@ RSpec.describe Post, type: :model do
   end
 
   it 'should persist a post' do
-    Post.destroy_all
     Comment.destroy_all
-    user = User.create(email: 'test@gmail.com', password: 'password')
-    post = build(:post, user: user)
-    post.save
+    Post.destroy_all
+    User.destroy_all
+    user = create(:user)
+    create(:post, user: user)
     expect(Post.count).to eq(1)
   end
 end
+

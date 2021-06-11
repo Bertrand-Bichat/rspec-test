@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context '#import' do
+    it 'should return the right name' do
+      User.destroy_all
+      user = create(:user)
+      allow(user).to receive(:callAPI).and_return('[{"name": "John Doe"}, {}, {}]')
+      expect(user).to receive(:callAPI).with('https://jsonplaceholder.typicode.com/users')
+      expect(user.import).to eq('John Doe')
+    end
+  end
 end
