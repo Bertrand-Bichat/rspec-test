@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
   describe 'POST #create' do
-    context 'invalid params' do
+
+    context '# invalid params' do
       before do
         user1 = create(:user)
         user2 = create(:user)
@@ -17,7 +18,8 @@ RSpec.describe CommentsController, type: :controller do
         expect(json).to include('content')
       end
     end
-    context 'valid params' do
+
+    context '# valid params' do
       before do
         user1 = create(:user)
         user2 = create(:user)
@@ -39,5 +41,6 @@ RSpec.describe CommentsController, type: :controller do
         expect(Post.first.comments.count).to eq(1)
       end
     end
+
   end
 end
