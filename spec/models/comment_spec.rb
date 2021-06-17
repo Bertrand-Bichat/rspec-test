@@ -8,8 +8,6 @@ RSpec.describe Comment, type: :model do
     end
 
     it 'should accept a good content' do
-      Post.destroy_all
-      User.destroy_all
       user = create(:user)
       post = create(:post, user: user)
       comment = build(:comment, post: post, user: user)

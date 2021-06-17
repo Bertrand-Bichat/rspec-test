@@ -3,9 +3,6 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   context 'comments association' do
     it 'should increment comments_count when a new comment is created' do
-      Comment.destroy_all
-      Post.destroy_all
-      User.destroy_all
       user = create(:user)
       user2 = create(:user)
       post = create(:post, user: user)
@@ -18,9 +15,6 @@ RSpec.describe Post, type: :model do
   end
 
   it 'should persist a post' do
-    Comment.destroy_all
-    Post.destroy_all
-    User.destroy_all
     user = create(:user)
     create(:post, user: user)
     expect(Post.count).to eq(1)
