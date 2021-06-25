@@ -56,6 +56,7 @@ group :development, :test do  gem 'pry-byebug'
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails'
   gem 'database_cleaner'
+  gem 'simplecov', require: false
 end
 
 group :development do
